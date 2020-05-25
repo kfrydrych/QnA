@@ -1,0 +1,25 @@
+﻿@model QnA.Application.Audience.Commands.AddQuestion.AddQuestionCommand
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AskQuestion"
+              data-ajax="true"
+              data-ajax-method="POST"
+              data-ajax-mode="replace"
+              data-ajax-update="#add-question-form-wrapper"
+              data-ajax-success="onQuestionAsked"
+              data-ajax-failure="onAskingQuestionFailure">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <textarea asp-for="Text" id="question-input" class="form-control" rows="2" placeholder="Enter the question here..."></textarea>
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="SessionId" />
+            <div class="form-group">
+                <input type="submit" value="Ask Question" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

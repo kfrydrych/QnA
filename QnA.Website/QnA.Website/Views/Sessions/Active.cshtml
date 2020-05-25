@@ -1,0 +1,133 @@
+﻿@model QnA.Application.Admin.Queries.GetActiveSession.GetActiveSessionResult
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Board - QnA</title>
+    @await Html.PartialAsync("_Css")
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <blockquote class="blockquote">
+                <p class="mb-0">@Model.Title</p>
+                <footer class="blockquote-footer">Access Code: <cite title="Source Title">@Model.Password</cite></footer>
+            </blockquote>
+        </nav>
+    </header>
+
+    <div id="questions-container"></div>
+
+    @await Html.PartialAsync("_Scripts")
+</body>
+</html>
+
+<script type="text/template" data-template="question">
+    <div id="${id}" class="card card-question" data-score="${score}">
+        <div class="card-body">
+            <div class="row">
+                @*<div class="col-1"><i class="fas fa-question fa-2x"></i></div>*@
+                <div class="col">
+                    <p class="card-text text-justify">${text}</p>
+                    <p class="card-text"><small class="text-muted"><i class="fa fa-thumbs-up mr-1" aria-hidden="true"></i><score>${score}</score></small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script>
+
+    let $grid;
+
+    getQuestions();
+
+    var connection = new signalR.HubConnectionBuilder().withUrl("/applicationHub").build();
+
+    connection.on("AddQuestion", function (dto) {
+
+        if (dto.sessionId == getSessionId()) {
+
+            const questionsContainer = $('#questions-container');
+            TemplateBuilder.Build(dto, "question", questionsContainer);
+            questionsContainer.isotope('reloadItems').isotope({ sortBy: '[data-score]' });
+        }
+    });
+
+    connection.on("PromoteQuestion", function (dto) {
+
+        $('#' + dto.id + ' score').text(dto.score);
+        $('#' + dto.id).attr("data-score", dto.score);
+        $grid.isotope('updateSortData');
+        $grid.isotope({ sortBy: "category", sortAscending: false });
+
+    });
+
+    connection.start().catch(function (err) {
+        return console.error(err.toString());
+    });
+
+    function getQuestions() {
+        $.get('/api/questions/sessionId/' + getSessionId(),
+            function (result) {
+                const questionsContainer = $('#questions-container');
+                questionsContainer.empty();
+                TemplateBuilder.Build(result.questions, "question", questionsContainer);
+                initIsotop();
+            });
+    }
+
+    function initIsotop() {
+        $grid = $('#questions-container').isotope({
+            itemSelector: '.card-question',
+            layoutMode: 'fitRows',
+            getSortData: {
+                category: '[data-score]'
+            }
+        });
+    }
+
+    function getSessionId() {
+        const url = window.location.href;
+        const lastslashindex = url.lastIndexOf('/');
+        return url.substring(lastslashindex + 1).toLowerCase();
+    }
+
+    const TemplateBuilder = function () {
+        "use strict";
+
+        function findTemplate(templateName) {
+            return $('script[data-template="' + templateName + '"]').text().split(/\$\{(.+?)\}/g);
+        }
+
+        function render(props) {
+            return function (tok, i) { return (i % 2) ? props[tok] : tok; };
+        }
+
+        function build(data, templateName, targetSelector) {
+
+            const template = findTemplate(templateName);
+
+            if (template == "" || template == null || template == 'undefined')
+                console.log('Error: cound not find the script template with attribute data-template: "' + templateName + '" on page');
+
+            if (!Array.isArray(data)) data = [data];
+
+            $(targetSelector).append(data.map(function (item) {
+                return template.map(render(item)).join('');
+            }));
+        }
+
+        return {
+            Build: build
+        }
+
+    }();
+
+
+</script>

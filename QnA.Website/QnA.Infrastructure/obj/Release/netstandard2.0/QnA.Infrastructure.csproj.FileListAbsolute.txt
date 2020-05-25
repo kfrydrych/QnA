@@ -1,0 +1,13 @@
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Infrastructure\bin\Release\netstandard2.0\QnA.Infrastructure.deps.json
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Infrastructure\bin\Release\netstandard2.0\QnA.Infrastructure.dll
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Infrastructure\bin\Release\netstandard2.0\QnA.Infrastructure.pdb
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Infrastructure\bin\Release\netstandard2.0\QnA.Application.dll
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Infrastructure\bin\Release\netstandard2.0\QnA.Domain.dll
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Infrastructure\bin\Release\netstandard2.0\QnA.Application.pdb
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Infrastructure\bin\Release\netstandard2.0\QnA.Domain.pdb
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Infrastructure\obj\Release\netstandard2.0\QnA.Infrastructure.csprojAssemblyReference.cache
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Infrastructure\obj\Release\netstandard2.0\QnA.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Infrastructure\obj\Release\netstandard2.0\QnA.Infrastructure.AssemblyInfo.cs
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Infrastructure\obj\Release\netstandard2.0\QnA.Infrastructure.csproj.CopyComplete
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Infrastructure\obj\Release\netstandard2.0\QnA.Infrastructure.dll
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Infrastructure\obj\Release\netstandard2.0\QnA.Infrastructure.pdb

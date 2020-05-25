@@ -1,0 +1,11 @@
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Application\bin\Debug\netstandard2.0\QnA.Application.deps.json
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Application\bin\Debug\netstandard2.0\QnA.Application.dll
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Application\obj\Debug\netstandard2.0\QnA.Application.csprojAssemblyReference.cache
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Application\obj\Debug\netstandard2.0\QnA.Application.AssemblyInfoInputs.cache
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Application\obj\Debug\netstandard2.0\QnA.Application.AssemblyInfo.cs
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Application\bin\Debug\netstandard2.0\QnA.Application.pdb
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Application\bin\Debug\netstandard2.0\QnA.Domain.dll
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Application\bin\Debug\netstandard2.0\QnA.Domain.pdb
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Application\obj\Debug\netstandard2.0\QnA.Application.csproj.CopyComplete
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Application\obj\Debug\netstandard2.0\QnA.Application.dll
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Application\obj\Debug\netstandard2.0\QnA.Application.pdb

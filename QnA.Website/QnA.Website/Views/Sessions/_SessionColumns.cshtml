@@ -1,0 +1,35 @@
+﻿@model QnA.Application.Admin.Queries.GetSessions.GetSessionsResult.Session
+
+<td>@Model.Title</td>
+<td>@Model.DateCreated</td>
+<td>@Model.StatusName</td>
+<td>
+    <div class="dropdown">
+        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Actions
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" asp-action="Active" , asp-route-id="@Model.Id">View Board</a>
+            <div class="dropdown-divider"></div>
+            @if (Model.CanSetOnline)
+            {
+                <a class="dropdown-item" 
+                   data-ajax="true"
+                   data-ajax-method="POST"
+                   data-ajax-mode="replace"
+                   data-ajax-update="#session-@Model.Id-row" 
+                   asp-action="SetOnline" 
+                   asp-route-id="@Model.Id">Set Online</a>
+            }
+            @if (Model.CanSetOffline)
+            {
+                <a class="dropdown-item" data-ajax="true"
+                   data-ajax-method="POST"
+                   data-ajax-mode="replace"
+                   data-ajax-update="#session-@Model.Id-row" 
+                   asp-action="SetOffline" 
+                   asp-route-id="@Model.Id">Set Offline</a>
+            }
+        </div>
+    </div>
+</td>

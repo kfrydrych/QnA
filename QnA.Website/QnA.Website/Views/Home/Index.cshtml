@@ -1,0 +1,25 @@
+﻿@model QnA.Application.Audience.Queries.FindSessions.FindSessionsQuery
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1 class="display-4">QnA</h1>
+    <p class="lead">Because good question matter...</p>
+    <hr class="my-4">
+    @await Html.PartialAsync("_FindSessionsForm")
+    <div id="findSessionResultWrapper"></div>
+</div>
+
+
+@section Scripts
+{
+    <script>
+
+        function showFindSessionsResultModal() {
+            $('#findSessionResultModal').modal('show');
+        }
+
+    </script>
+}

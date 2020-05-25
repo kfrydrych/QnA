@@ -1,0 +1,178 @@
+﻿@model QnA.Application.Audience.Queries.GetSession.GetSessionResult
+
+
+@{
+    ViewData["Title"] = "Session";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card mb-2">
+    <div class="card-body">
+        <h4 class="card-title">@Model.Title</h4>
+        <div id="add-question-form-wrapper">
+            @await Html.PartialAsync("_AskQuestion", Model.AddQuestionCommand)
+        </div>
+    </div>
+</div>
+
+<div id="questions-container" class="list-group list-group-flush"></div>
+
+<script type="text/template" data-template="question">
+    <div id="${id}" class="list-group-item" data-score="${score}">
+        <div class="row">
+            <div class="col-xs-1">
+                <i class="far fa-arrow-alt-circle-up fa-2x mb-3 js-btn-vote" data-questionId="${id}" data-canvote="${canVote}"></i>
+                <p><small class="text-muted"><i class="fa fa-thumbs-up fa-2x mr-1" aria-hidden="true"></i><score>${score}</score></small></p>
+            </div>
+            <div class="col">
+                <p>${text}</p>
+            </div>
+        </div>
+
+    </div>
+</script>
+
+@section Scripts
+{
+
+    <script>
+
+        let $grid;
+
+        getQuestions();
+
+        var connection = new signalR.HubConnectionBuilder().withUrl("/applicationHub").build();
+
+        connection.on("AddQuestion",
+            function (dto) {
+
+                //if (dto.sessionId == getSessionId()) {
+
+                //    const questionsContainer = $('#questions-container');
+                //    TemplateBuilder.Build(dto, "question", questionsContainer);
+                //    questionsContainer.isotope('reloadItems').isotope({ sortBy: '[data-score]' });
+                //}
+                getQuestions();
+            });
+
+        connection.on("PromoteQuestion",
+            function (dto) {
+
+                //$('#' + dto.id + ' score').text(dto.score);
+                //$('#' + dto.id).attr("data-score", dto.score);
+                //$grid.isotope('updateSortData');
+                //$grid.isotope({ sortBy: "category", sortAscending: false });
+                getQuestions();
+            });
+
+        connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        $(document).delegate('.js-btn-vote', 'click', function () {
+            const canVote = $(this).attr('data-canvote');
+            if (canVote == 'true') {
+                const questionId = $(this).attr('data-questionId');
+                promoteQuestion(questionId);
+            }
+        });
+
+        function updateVoteButtons() {
+            $('.js-btn-vote').each(function (index) {
+                const canVote = $(this).attr('data-canvote');
+                if (canVote == 'true') {
+                    $(this).css('color', 'black');
+                } else {
+                    $(this).css('color', 'green');
+                }
+
+            });
+        }
+
+        function getQuestions() {
+            $.get('/api/audience/questions/sessionId/' + getSessionId(),
+                function (result) {
+                    const questionsContainer = $('#questions-container');
+                    questionsContainer.empty();
+                    TemplateBuilder.Build(result.questions, "question", questionsContainer);
+                    initIsotop();
+                    updateVoteButtons();
+                });
+        }
+
+        function promoteQuestion(questionId) {
+            const data = {
+                questionId: questionId,
+                sessionId: getSessionId()
+            }
+
+            $.post('/api/audience/questions/promote', data)
+                .done(function () {
+
+                })
+                .fail(function (jqxhr, status, error) {
+                    alert(error);
+                });
+        }
+
+        function initIsotop() {
+            $grid = $('#questions-container').isotope({
+                itemSelector: '.card-question',
+                layoutMode: 'fitRows',
+                getSortData: {
+                    category: '[data-score]'
+                }
+            });
+        }
+
+        function getSessionId() {
+            const url = window.location.href;
+            const lastslashindex = url.lastIndexOf('/');
+            return url.substring(lastslashindex + 1).toLowerCase();
+        }
+
+        function onQuestionAsked() {
+            $('#question-input').val("");
+            getQuestions();
+        }
+
+        function onAskingQuestionFailure(error) {
+            console.log(error);
+        }
+
+        const TemplateBuilder = function () {
+            "use strict";
+
+            function findTemplate(templateName) {
+                return $('script[data-template="' + templateName + '"]').text().split(/\$\{(.+?)\}/g);
+            }
+
+            function render(props) {
+                return function (tok, i) { return (i % 2) ? props[tok] : tok; };
+            }
+
+            function build(data, templateName, targetSelector) {
+
+                const template = findTemplate(templateName);
+
+                if (template == "" || template == null || template == 'undefined')
+                    console.log('Error: cound not find the script template with attribute data-template: "' +
+                        templateName +
+                        '" on page');
+
+                if (!Array.isArray(data)) data = [data];
+
+                $(targetSelector).append(data.map(function (item) {
+                    return template.map(render(item)).join('');
+                }));
+            }
+
+            return {
+                Build: build
+            }
+
+        }();
+
+
+    </script>
+}

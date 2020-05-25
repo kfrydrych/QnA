@@ -1,0 +1,31 @@
+﻿@model QnA.Application.Admin.Queries.GetSessions.GetSessionsResult
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Created</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Sessions)
+        {
+            <tr id="session-@item.Id-row">
+                @await Html.PartialAsync("_SessionColumns", item)
+            </tr>
+
+        }
+    </tbody>
+</table>

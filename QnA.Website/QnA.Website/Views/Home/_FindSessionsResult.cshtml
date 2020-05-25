@@ -1,0 +1,32 @@
+﻿@model QnA.Application.Audience.Queries.FindSessions.FindSessionsResult
+
+<div class="modal fade" id="findSessionResultModal" tabindex="-1" role="dialog" aria-labelledby="findSessionResultModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="findSessionResultModalLabel">Search Result</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @if (!Model.Sessions.Any())
+                {
+                    <p><strong>No sessions found.</strong> The session you are looking for might not exist or is not active.</p>
+                }
+                else
+                {
+                    <div class="list-group">
+                        @foreach (var item in Model.Sessions)
+                        {
+                            <a asp-action="Session" asp-controller="Audience" asp-route-id="@item.Id" class="list-group-item list-group-item-action">@item.Title</a>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

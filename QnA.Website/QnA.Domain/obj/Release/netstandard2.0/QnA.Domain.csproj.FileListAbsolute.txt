@@ -1,0 +1,8 @@
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Domain\bin\Release\netstandard2.0\QnA.Domain.deps.json
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Domain\bin\Release\netstandard2.0\QnA.Domain.dll
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Domain\bin\Release\netstandard2.0\QnA.Domain.pdb
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Domain\obj\Release\netstandard2.0\QnA.Domain.csprojAssemblyReference.cache
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Domain\obj\Release\netstandard2.0\QnA.Domain.AssemblyInfoInputs.cache
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Domain\obj\Release\netstandard2.0\QnA.Domain.AssemblyInfo.cs
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Domain\obj\Release\netstandard2.0\QnA.Domain.dll
+C:\Users\Crash\Desktop\QnA\QnA.Website\QnA.Domain\obj\Release\netstandard2.0\QnA.Domain.pdb

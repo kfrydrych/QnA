@@ -1,0 +1,44 @@
+﻿@model QnA.Website.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Login</h1>
+
+<h4>LoginViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*@foreach (var provider in Model.ExternalLogins)
+                {
+                    <button type="submit"
+                            name="provider"
+                            value="@provider.Name"
+                            class="btn btn-primary"
+                            title="Login using your @provider.DisplayName account">
+                        @provider.DisplayName
+                    </button>
+                }*@
+
+            <button type="submit"
+                    name="provider"
+                    value="Google"
+                    class="btn btn-primary"
+                    title="Login using your Google account">
+                Google
+            </button>
+            <button type="submit"
+                    name="provider"
+                    value="Facebook"
+                    class="btn btn-primary"
+                    title="Login using your Facebook account">
+                Facebook
+            </button>
+        </form>
+    </div>
+</div>
+
