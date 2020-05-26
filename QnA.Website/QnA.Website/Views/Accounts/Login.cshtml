@@ -5,12 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Login</h1>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Use one of the options to login</h4>
 
-<h4>LoginViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
         <form asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*@foreach (var provider in Model.ExternalLogins)
@@ -41,4 +39,7 @@
         </form>
     </div>
 </div>
+
+
+
 
