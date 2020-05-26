@@ -14,8 +14,8 @@ namespace QnA.Application.Admin.Queries.GetSessions
             public Status Status { get; set; }
             public string StatusName { get; set; }
             public string DateCreated { get; set; }
-            public bool CanSetOffline => Status == Status.Online;
-            public bool CanSetOnline => Status == Status.Offline;
+            public bool IsOnline => Status == Status.Online;
+            public bool IsOffline => Status == Status.Offline;
         }
     }
 }
