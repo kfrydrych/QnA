@@ -21,6 +21,13 @@
         </nav>
     </header>
 
+    @if (Model.IsOffline)
+    {
+        <div class="alert alert-danger text-center">
+            <strong>This session if offline.</strong> The audience is unable to participate.
+        </div>
+    }
+
     <div id="questions-container"></div>
 
     @await Html.PartialAsync("_Scripts")
@@ -31,7 +38,6 @@
     <div id="${id}" class="card card-question" data-score="${score}">
         <div class="card-body">
             <div class="row">
-                @*<div class="col-1"><i class="fas fa-question fa-2x"></i></div>*@
                 <div class="col">
                     <p class="card-text text-justify">${text}</p>
                     <p class="card-text"><small class="text-muted"><i class="fa fa-thumbs-up mr-1" aria-hidden="true"></i><score>${score}</score></small></p>

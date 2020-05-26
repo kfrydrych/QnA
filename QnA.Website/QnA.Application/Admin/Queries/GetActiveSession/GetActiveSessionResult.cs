@@ -4,5 +4,6 @@
     {
         public string Title { get; set; }
         public string Password { get; set; }
+        public bool IsOffline { get; set; }
     }
 }

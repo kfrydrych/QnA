@@ -1,9 +1,10 @@
-﻿using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using QnA.Application.Interfaces;
+using QnA.Domain.Models;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace QnA.Application.Admin.Queries.GetActiveSession
 {
@@ -22,7 +23,8 @@ namespace QnA.Application.Admin.Queries.GetActiveSession
                 .Select(x => new GetActiveSessionResult
                 {
                     Title = x.Title,
-                    Password = x.AccessCode
+                    Password = x.AccessCode,
+                    IsOffline = x.Status == Status.Offline
                 })
                 .SingleOrDefaultAsync(cancellationToken);
         }
