@@ -16,7 +16,7 @@ namespace QnA.Website
         {
             services.AddHttpContextAccessor();
 
-            services.AddSingleton<IUser, User>();
+            services.AddSingleton<IUser, TestUser>();
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
 

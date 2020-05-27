@@ -21,11 +21,11 @@
     <div id="${id}" class="list-group-item" data-score="${score}">
         <div class="row">
             <div class="col-xs-1">
-                <i class="far fa-arrow-alt-circle-up fa-2x mb-3 js-btn-vote" data-questionId="${id}" data-canvote="${canVote}"></i>
+                <i class="far fa-arrow-alt-circle-up fa-2x mb-3 js-btn-vote" data-questionId="${id}" data-canvote="${canVote}" data-not-already-voted="${notAlreadyVoted}"></i>
                 <p><small class="text-muted"><i class="fa fa-thumbs-up fa-2x mr-1" aria-hidden="true"></i><score>${score}</score></small></p>
             </div>
             <div class="col">
-                <p>${text}</p>
+                <p class="text-justify">${text} <span class="badge badge-pill badge-info js-owner-label" data-isowner="${isCreatedByUser}">Own question</span></p>
             </div>
         </div>
 
@@ -78,14 +78,27 @@
         });
 
         function updateVoteButtons() {
-            $('.js-btn-vote').each(function (index) {
+            $('.js-btn-vote').each(function () {
                 const canVote = $(this).attr('data-canvote');
-                if (canVote == 'true') {
-                    $(this).css('color', 'black');
+                if (canVote == 'false') {
+                    $(this).hide();
                 } else {
-                    $(this).css('color', 'green');
+                    const notAlreadyVoted = $(this).attr('data-not-already-voted');
+                    if (notAlreadyVoted == 'true') {
+                        $(this).css('color', 'black');
+                    } else {
+                        $(this).css('color', 'green');
+                    }
                 }
+            });
+        }
 
+        function updateOwnerLabels() {
+            $('.js-owner-label').each(function () {
+                const isOwner = $(this).attr('data-isowner');
+                if (isOwner == 'false') {
+                    $(this).hide();
+                }
             });
         }
 
@@ -97,6 +110,7 @@
                     TemplateBuilder.Build(result.questions, "question", questionsContainer);
                     initIsotop();
                     updateVoteButtons();
+                    updateOwnerLabels();
                 });
         }
 

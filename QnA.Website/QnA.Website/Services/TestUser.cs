@@ -13,6 +13,6 @@ namespace QnA.Website.Services
         }
 
         public string Username => "krzysztof.frydrych@mail.com";
-        public string UniqueSource => _contextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+        public string UniqueSource => _contextAccessor.HttpContext.Connection.RemoteIpAddress + "_TEST";
     }
 }
