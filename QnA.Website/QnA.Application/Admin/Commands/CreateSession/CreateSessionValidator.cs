@@ -6,8 +6,8 @@ namespace QnA.Application.Admin.Commands.CreateSession
     {
         public CreateSessionValidator()
         {
-            RuleFor(x => x.Title).NotEmpty();
-            RuleFor(x => x.AccessCode).NotEmpty();
+            RuleFor(x => x.Title).NotEmpty().MaximumLength(250);
+            RuleFor(x => x.AccessCode).NotEmpty().MaximumLength(50);
         }
     }
 }
