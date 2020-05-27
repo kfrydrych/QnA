@@ -13,6 +13,7 @@ namespace QnA.Application.Audience.Queries.GetQuestions
             public int Score { get; set; }
             public Guid SessionId { get; set; }
             public bool CanVote { get; set; }
+            public bool IsCreatedByUser { get; set; }
 
         }
     }

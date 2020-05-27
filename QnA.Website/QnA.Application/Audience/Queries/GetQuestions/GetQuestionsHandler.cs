@@ -35,7 +35,8 @@ namespace QnA.Application.Audience.Queries.GetQuestions
                 Text = x.Text,
                 SessionId = session.Id,
                 Score = x.Score,
-                CanVote = x.Votes.Count(v => v.AddedBy == _user.UniqueSource) == 0
+                CanVote = x.Votes.Count(v => v.AddedBy == _user.UniqueSource) == 0 && x.CreatedBy != _user.UniqueSource,
+                IsCreatedByUser = x.CreatedBy == _user.UniqueSource
             })
             .OrderByDescending(x => x.Score)
             .ToList();
