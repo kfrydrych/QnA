@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using QnA.Application;
 using QnA.Infrastructure;
 using QnA.Persistence;
+using QnA.Website.Infrastructure.Filters;
 using QnA.Website.Services;
 
 namespace QnA.Website
@@ -23,7 +24,10 @@ namespace QnA.Website
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews()
+            services.AddControllersWithViews(config =>
+                {
+                    config.Filters.Add(new AudienceIdentityCookieFilter());
+                })
             .AddFluentValidation(options =>
                 {
                     options.RegisterValidatorsFromAssemblyContaining<ApplicationMarker>();
@@ -31,13 +35,14 @@ namespace QnA.Website
 
             services.AddApplication();
 
+            services.AddAuthProviders();
+
             services.AddInfrastructure();
 
             services.AddPersistence(Configuration);
 
             services.AddWebsite();
 
-            services.AddAuthProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

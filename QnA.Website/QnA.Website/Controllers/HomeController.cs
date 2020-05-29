@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QnA.Application.Audience.Queries.FindSessions;
 using QnA.Website.Models;
