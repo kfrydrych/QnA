@@ -43,13 +43,9 @@
 
         var connection = new signalR.HubConnectionBuilder().withUrl("/applicationHub").build();
 
-        connection.on("AddQuestion", function () {
-            getQuestions();
-        });
+        connection.on("AddQuestion", getQuestions);
 
-        connection.on("PromoteQuestion", function () {
-            getQuestions();
-        });
+        connection.on("PromoteQuestion", getQuestions);
 
         connection.start().catch(function (err) {
             return console.error(err.toString());
