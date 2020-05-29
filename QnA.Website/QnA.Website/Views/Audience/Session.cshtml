@@ -43,27 +43,13 @@
 
         var connection = new signalR.HubConnectionBuilder().withUrl("/applicationHub").build();
 
-        connection.on("AddQuestion",
-            function (dto) {
+        connection.on("AddQuestion", function () {
+            getQuestions();
+        });
 
-                //if (dto.sessionId == getSessionId()) {
-
-                //    const questionsContainer = $('#questions-container');
-                //    TemplateBuilder.Build(dto, "question", questionsContainer);
-                //    questionsContainer.isotope('reloadItems').isotope({ sortBy: '[data-score]' });
-                //}
-                getQuestions();
-            });
-
-        connection.on("PromoteQuestion",
-            function (dto) {
-
-                //$('#' + dto.id + ' score').text(dto.score);
-                //$('#' + dto.id).attr("data-score", dto.score);
-                //$grid.isotope('updateSortData');
-                //$grid.isotope({ sortBy: "category", sortAscending: false });
-                getQuestions();
-            });
+        connection.on("PromoteQuestion", function () {
+            getQuestions();
+        });
 
         connection.start().catch(function (err) {
             return console.error(err.toString());
@@ -108,7 +94,6 @@
                     const questionsContainer = $('#questions-container');
                     questionsContainer.empty();
                     TemplateBuilder.Build(result.questions, "question", questionsContainer);
-                    initIsotop();
                     updateVoteButtons();
                     updateOwnerLabels();
                 });
@@ -127,16 +112,6 @@
                 .fail(function (jqxhr, status, error) {
                     alert(error);
                 });
-        }
-
-        function initIsotop() {
-            $grid = $('#questions-container').isotope({
-                itemSelector: '.card-question',
-                layoutMode: 'fitRows',
-                getSortData: {
-                    category: '[data-score]'
-                }
-            });
         }
 
         function getSessionId() {
