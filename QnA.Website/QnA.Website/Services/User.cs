@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using QnA.Application.Interfaces;
+using QnA.Website.Infrastructure;
 using System.Linq;
 
 namespace QnA.Website.Services
@@ -16,6 +17,6 @@ namespace QnA.Website.Services
         public string Username => _contextAccessor?.HttpContext?.User?.Claims?
             .FirstOrDefault(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")?.Value;
 
-        public string UniqueSource => _contextAccessor.HttpContext.Request.Cookies["audience-id"];
+        public string UniqueSource => _contextAccessor.HttpContext.Request.Cookies[Constants.AudienceId];
     }
 }

@@ -9,11 +9,11 @@ namespace QnA.Website.Infrastructure.Filters
     {
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            var storedCookie = context.HttpContext.Request.Cookies["audience-id"];
+            var storedCookie = context.HttpContext.Request.Cookies[Constants.AudienceId];
 
             if (storedCookie == null)
             {
-                var key = "audience-id";
+                var key = Constants.AudienceId;
                 var value = Guid.NewGuid().ToString();
                 var options = new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) };
                 context.HttpContext.Response.Cookies.Append(key, value, options);
