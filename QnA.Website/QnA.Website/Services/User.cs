@@ -15,6 +15,7 @@ namespace QnA.Website.Services
 
         public string Username => _contextAccessor?.HttpContext?.User?.Claims?
             .FirstOrDefault(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")?.Value;
-        public string UniqueSource => _contextAccessor?.HttpContext?.Connection?.RemoteIpAddress?.ToString();
+
+        public string UniqueSource => _contextAccessor.HttpContext.Request.Cookies["audience-id"];
     }
 }
