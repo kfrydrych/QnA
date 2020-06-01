@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QnA.Website", "QnA.Website\QnA.Website.csproj", "{19CA5073-2F17-4414-8B99-FA222F4AA06A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QnA.Website", "QnA.Website\QnA.Website.csproj", "{19CA5073-2F17-4414-8B99-FA222F4AA06A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QnA.Application", "QnA.Application\QnA.Application.csproj", "{CE94A87C-4F3C-4320-A8DC-CE7BC50D41EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QnA.Application", "QnA.Application\QnA.Application.csproj", "{CE94A87C-4F3C-4320-A8DC-CE7BC50D41EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QnA.Domain", "QnA.Domain\QnA.Domain.csproj", "{CC3A494A-07D3-43ED-9308-9793A57B7AE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QnA.Domain", "QnA.Domain\QnA.Domain.csproj", "{CC3A494A-07D3-43ED-9308-9793A57B7AE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QnA.Persistence", "QnA.Persistence\QnA.Persistence.csproj", "{1523C67F-1CC2-463A-A638-7A17DFE3129D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QnA.Persistence", "QnA.Persistence\QnA.Persistence.csproj", "{1523C67F-1CC2-463A-A638-7A17DFE3129D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QnA.Infrastructure", "QnA.Infrastructure\QnA.Infrastructure.csproj", "{67A80BE2-D31B-45BE-9299-905CE0947CB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QnA.Infrastructure", "QnA.Infrastructure\QnA.Infrastructure.csproj", "{67A80BE2-D31B-45BE-9299-905CE0947CB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QnA.Infrastructure.Background", "QnA.Infrastructure.Background\QnA.Infrastructure.Background.csproj", "{F32FD806-63EC-4072-847F-540DD456B0CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{67A80BE2-D31B-45BE-9299-905CE0947CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67A80BE2-D31B-45BE-9299-905CE0947CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67A80BE2-D31B-45BE-9299-905CE0947CB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F32FD806-63EC-4072-847F-540DD456B0CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F32FD806-63EC-4072-847F-540DD456B0CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F32FD806-63EC-4072-847F-540DD456B0CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F32FD806-63EC-4072-847F-540DD456B0CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
