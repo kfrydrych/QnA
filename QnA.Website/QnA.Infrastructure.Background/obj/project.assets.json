@@ -2874,6 +2874,21 @@
           "bin/placeholder/QnA.Domain.dll": {}
         }
       },
+      "QnA.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.3",
+          "QnA.Application": "1.0.0",
+          "QnA.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/QnA.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/QnA.Infrastructure.dll": {}
+        }
+      },
       "QnA.Persistence/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -8828,6 +8843,11 @@
       "path": "../QnA.Domain/QnA.Domain.csproj",
       "msbuildProject": "../QnA.Domain/QnA.Domain.csproj"
     },
+    "QnA.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../QnA.Infrastructure/QnA.Infrastructure.csproj",
+      "msbuildProject": "../QnA.Infrastructure/QnA.Infrastructure.csproj"
+    },
     "QnA.Persistence/1.0.0": {
       "type": "project",
       "path": "../QnA.Persistence/QnA.Persistence.csproj",
@@ -8839,6 +8859,7 @@
       "Microsoft.Azure.Functions.Extensions >= 1.0.0",
       "Microsoft.Azure.WebJobs.Core >= 3.0.16",
       "Microsoft.NET.Sdk.Functions >= 3.0.3",
+      "QnA.Infrastructure >= 1.0.0",
       "QnA.Persistence >= 1.0.0"
     ]
   },
@@ -8876,6 +8897,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "C:\\Users\\Crash\\Desktop\\QnA\\QnA.Website\\QnA.Infrastructure\\QnA.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Crash\\Desktop\\QnA\\QnA.Website\\QnA.Infrastructure\\QnA.Infrastructure.csproj"
+            },
             "C:\\Users\\Crash\\Desktop\\QnA\\QnA.Website\\QnA.Persistence\\QnA.Persistence.csproj": {
               "projectPath": "C:\\Users\\Crash\\Desktop\\QnA\\QnA.Website\\QnA.Persistence\\QnA.Persistence.csproj"
             }

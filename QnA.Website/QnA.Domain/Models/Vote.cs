@@ -1,24 +1,22 @@
-﻿using QnA.Domain.Interfaces;
+﻿using QnA.Domain.Common;
+using QnA.Domain.Interfaces;
 using System;
 
 namespace QnA.Domain.Models
 {
-    public class Vote
+    public class Vote : AuditableEntity
     {
         protected Vote()
         {
         }
 
-        public Vote(string addedBy, IDateService dateService)
+        public Vote(string createdBy, IDateService dateService)
         {
-            DateAdded = dateService.Now;
-            AddedBy = addedBy;
+            CaptureCreation(createdBy, dateService);
         }
 
         public Guid Id { get; protected set; }
         public Question Question { get; protected set; }
-        public DateTime DateAdded { get; protected set; }
-        public string AddedBy { get; protected set; }
 
     }
 }
