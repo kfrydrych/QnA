@@ -17,8 +17,11 @@ namespace QnA.Domain.Common
 
         protected void CaptureCreation(string createdBy, IDateService dateService)
         {
+            var now = dateService.Now;
             CreatedBy = createdBy;
-            Created = dateService.Now;
+            Created = now;
+            LastModifiedBy = createdBy;
+            LastModified = now;
             LastChangeEvent = "Created";
         }
 
