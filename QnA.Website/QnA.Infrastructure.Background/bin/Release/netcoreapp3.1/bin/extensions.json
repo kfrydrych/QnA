@@ -1,0 +1,5 @@
+{
+  "extensions":[
+    { "name": "Startup", "typeName":"QnA.Infrastructure.Background.Startup, QnA.Infrastructure.Background, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"}
+  ]
+}
