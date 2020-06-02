@@ -68,6 +68,7 @@ namespace QnA.Domain.Models
     public enum Status
     {
         Online = 1,
-        Offline = 2
+        Offline = 2,
+        Archived = 3
     }
 }
