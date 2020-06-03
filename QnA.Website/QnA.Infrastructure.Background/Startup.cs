@@ -20,8 +20,6 @@ namespace QnA.Infrastructure.Background
                 .AddEnvironmentVariables()
                 .Build();
 
-            builder.Services.AddHttpClient();
-
             builder.Services.AddApplication();
 
             builder.Services.AddPersistence(configurationRoot);
