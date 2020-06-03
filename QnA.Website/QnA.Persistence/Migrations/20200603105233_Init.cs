@@ -12,12 +12,14 @@ namespace QnA.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
+                    CreatedBy = table.Column<string>(maxLength: 100, nullable: false),
+                    Created = table.Column<DateTime>(nullable: false),
+                    LastModifiedBy = table.Column<string>(maxLength: 100, nullable: false),
+                    LastModified = table.Column<DateTime>(nullable: false),
+                    LastChangeEvent = table.Column<string>(maxLength: 150, nullable: false),
                     Title = table.Column<string>(maxLength: 250, nullable: false),
-                    Login = table.Column<string>(maxLength: 50, nullable: false),
-                    Password = table.Column<string>(maxLength: 50, nullable: false),
-                    Status = table.Column<int>(nullable: false),
-                    Owner = table.Column<string>(maxLength: 50, nullable: false),
-                    DateCreated = table.Column<DateTime>(nullable: false)
+                    AccessCode = table.Column<string>(maxLength: 50, nullable: false),
+                    Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,21 +27,24 @@ namespace QnA.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Question",
+                name: "Questions",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
+                    CreatedBy = table.Column<string>(maxLength: 100, nullable: false),
+                    Created = table.Column<DateTime>(nullable: false),
+                    LastModifiedBy = table.Column<string>(maxLength: 100, nullable: false),
+                    LastModified = table.Column<DateTime>(nullable: false),
+                    LastChangeEvent = table.Column<string>(maxLength: 150, nullable: false),
                     SessionId = table.Column<Guid>(nullable: false),
                     Text = table.Column<string>(maxLength: 750, nullable: false),
-                    Score = table.Column<int>(nullable: false),
-                    DateAdded = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(maxLength: 50, nullable: false)
+                    Score = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Question", x => x.Id);
+                    table.PrimaryKey("PK_Questions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Question_Sessions_SessionId",
+                        name: "FK_Questions_Sessions_SessionId",
                         column: x => x.SessionId,
                         principalTable: "Sessions",
                         principalColumn: "Id",
@@ -51,24 +56,27 @@ namespace QnA.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    QuestionId = table.Column<Guid>(nullable: false),
-                    DateAdded = table.Column<DateTime>(nullable: false),
-                    AddedBy = table.Column<string>(maxLength: 50, nullable: false)
+                    CreatedBy = table.Column<string>(maxLength: 100, nullable: false),
+                    Created = table.Column<DateTime>(nullable: false),
+                    LastModifiedBy = table.Column<string>(maxLength: 100, nullable: false),
+                    LastModified = table.Column<DateTime>(nullable: false),
+                    LastChangeEvent = table.Column<string>(maxLength: 150, nullable: false),
+                    QuestionId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vote", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Vote_Question_QuestionId",
+                        name: "FK_Vote_Questions_QuestionId",
                         column: x => x.QuestionId,
-                        principalTable: "Question",
+                        principalTable: "Questions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Question_SessionId",
-                table: "Question",
+                name: "IX_Questions_SessionId",
+                table: "Questions",
                 column: "SessionId");
 
             migrationBuilder.CreateIndex(
@@ -83,7 +91,7 @@ namespace QnA.Persistence.Migrations
                 name: "Vote");
 
             migrationBuilder.DropTable(
-                name: "Question");
+                name: "Questions");
 
             migrationBuilder.DropTable(
                 name: "Sessions");

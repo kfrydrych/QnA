@@ -38,10 +38,11 @@ namespace QnA.Persistence.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
-                    b.Property<DateTime?>("LastModified")
+                    b.Property<DateTime>("LastModified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastModifiedBy")
+                        .IsRequired()
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
@@ -87,10 +88,11 @@ namespace QnA.Persistence.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
-                    b.Property<DateTime?>("LastModified")
+                    b.Property<DateTime>("LastModified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastModifiedBy")
+                        .IsRequired()
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
@@ -126,10 +128,11 @@ namespace QnA.Persistence.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
-                    b.Property<DateTime?>("LastModified")
+                    b.Property<DateTime>("LastModified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastModifiedBy")
+                        .IsRequired()
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 

@@ -10,8 +10,8 @@ using QnA.Persistence;
 namespace QnA.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200425220349_QuestionsTableNameUpdated")]
-    partial class QuestionsTableNameUpdated
+    [Migration("20200603105233_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,13 +27,26 @@ namespace QnA.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("CreatedBy")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
-                    b.Property<DateTime>("DateAdded")
+                    b.Property<string>("LastChangeEvent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.Property<DateTime>("LastModified")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<int>("Score")
                         .HasColumnType("int");
@@ -59,23 +72,31 @@ namespace QnA.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<string>("AccessCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Login")
+                    b.Property<string>("CreatedBy")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
-                    b.Property<string>("Owner")
+                    b.Property<string>("LastChangeEvent")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
 
-                    b.Property<string>("Password")
+                    b.Property<DateTime>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -96,13 +117,26 @@ namespace QnA.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("AddedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<DateTime>("DateAdded")
+                    b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("LastChangeEvent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.Property<DateTime>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<Guid>("QuestionId")
                         .HasColumnType("uniqueidentifier");

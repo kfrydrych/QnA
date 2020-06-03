@@ -11,7 +11,7 @@ namespace QnA.Domain.Common
 
         public string LastModifiedBy { get; protected set; }
 
-        public DateTime? LastModified { get; protected set; }
+        public DateTime LastModified { get; protected set; }
 
         public string LastChangeEvent { get; protected set; }
 

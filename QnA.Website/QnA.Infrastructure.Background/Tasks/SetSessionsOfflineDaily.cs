@@ -26,7 +26,7 @@ namespace QnA.Infrastructure.Background.Tasks
         {
             log.LogInformation("Attempting to set sessions offline...");
 
-            var sessionsToUpdate = _unitOfWork.Sessions.Where(x => x.Status == Status.Online).ToList();
+            var sessionsToUpdate = _unitOfWork.Sessions.Where(x => x.Status == Status.Online && x.LastModified < _dateService.Now.AddDays(-1)).ToList();
 
             sessionsToUpdate.ForEach(x => x.SetOffline(_user.Username, _dateService));
 
