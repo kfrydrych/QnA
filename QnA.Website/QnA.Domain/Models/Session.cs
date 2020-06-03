@@ -1,4 +1,5 @@
-﻿using QnA.Domain.Exceptions;
+﻿using QnA.Domain.Common;
+using QnA.Domain.Exceptions;
 using QnA.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -6,27 +7,24 @@ using System.Linq;
 
 namespace QnA.Domain.Models
 {
-    public class Session
+    public class Session : AuditableEntity
     {
         protected Session()
         {
         }
 
-        public Session(string title, string accessCode, string owner, IDateService dateService)
+        public Session(string title, string accessCode, string createdBy, IDateService dateService)
         {
             Status = Status.Online;
             Title = title;
             AccessCode = accessCode;
-            Owner = owner;
-            DateCreated = dateService.Now;
+            CaptureCreation(createdBy, dateService);
         }
 
         public Guid Id { get; protected set; }
         public string Title { get; protected set; }
         public string AccessCode { get; protected set; }
         public Status Status { get; protected set; }
-        public string Owner { get; protected set; }
-        public DateTime DateCreated { get; protected set; }
         public IList<Question> Questions { get; set; } = new List<Question>();
 
         public Question AddQuestion(string text, string createdBy, IDateService dateService)
@@ -37,6 +35,8 @@ namespace QnA.Domain.Models
             var question = new Question(this, text, createdBy, dateService);
 
             Questions.Add(question);
+
+            CaptureModification(createdBy, dateService, "Question added");
 
             return question;
         }
@@ -55,13 +55,15 @@ namespace QnA.Domain.Models
 
             return question;
         }
-        public void SetOnline()
+        public void SetOnline(string createdBy, IDateService dateService)
         {
             Status = Status.Online;
+            CaptureModification(createdBy, dateService, $"Set {nameof(Status.Online)}");
         }
-        public void SetOffline()
+        public void SetOffline(string createdBy, IDateService dateService)
         {
             Status = Status.Offline;
+            CaptureModification(createdBy, dateService, $"Set {nameof(Status.Offline)}");
         }
     }
 

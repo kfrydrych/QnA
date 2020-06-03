@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using QnA.Application;
+using QnA.Application.Interfaces;
+using QnA.Infrastructure.Background.Infrastructure;
 using QnA.Persistence;
 using System.IO;
 
@@ -19,8 +21,14 @@ namespace QnA.Infrastructure.Background
                 .Build();
 
             builder.Services.AddHttpClient();
+
             builder.Services.AddApplication();
+
             builder.Services.AddPersistence(configurationRoot);
+
+            builder.Services.AddInfrastructure();
+
+            builder.Services.AddSingleton<IUser, SystemUser>();
         }
     }
 }

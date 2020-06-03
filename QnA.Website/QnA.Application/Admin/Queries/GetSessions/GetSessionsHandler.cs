@@ -21,15 +21,15 @@ namespace QnA.Application.Admin.Queries.GetSessions
         public async Task<GetSessionsResult> Handle(GetSessionsQuery request, CancellationToken cancellationToken)
         {
             var sessions = await _unitOfWork.Sessions
-                .Where(x => x.Owner == _user.Username)
-                .OrderByDescending(x => x.DateCreated)
+                .Where(x => x.CreatedBy == _user.Username)
+                .OrderByDescending(x => x.Created)
                 .Select(x => new GetSessionsResult.Session
                 {
                     Id = x.Id.ToString(),
                     Title = x.Title,
                     Status = x.Status,
                     StatusName = x.Status.ToString(),
-                    DateCreated = x.DateCreated.ToShortDateString()
+                    DateCreated = x.Created.ToShortDateString()
                 })
                 .ToListAsync(cancellationToken);
 

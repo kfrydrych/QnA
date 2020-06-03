@@ -4,6 +4,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using QnA.Application.Interfaces;
+using QnA.Domain.Interfaces;
 using QnA.Domain.Models;
 using System.Linq;
 using System.Threading;
@@ -14,10 +15,14 @@ namespace QnA.Infrastructure.Background.Tasks
     public class UpdateSessionsToOffline
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IUser _user;
+        private readonly IDateService _dateService;
 
-        public UpdateSessionsToOffline(IUnitOfWork unitOfWork)
+        public UpdateSessionsToOffline(IUnitOfWork unitOfWork, IUser user, IDateService dateService)
         {
             _unitOfWork = unitOfWork;
+            _user = user;
+            _dateService = dateService;
         }
 
         [FunctionName("update-sessions-to-offline")]
@@ -29,7 +34,7 @@ namespace QnA.Infrastructure.Background.Tasks
 
             var sessionsToUpdate = _unitOfWork.Sessions.Where(x => x.Status == Status.Online).ToList();
 
-            sessionsToUpdate.ForEach(x => x.SetOffline());
+            sessionsToUpdate.ForEach(x => x.SetOffline(_user.Username, _dateService));
 
             await _unitOfWork.SaveChangesAsync(CancellationToken.None);
 

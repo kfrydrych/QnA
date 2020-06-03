@@ -21,14 +21,14 @@ namespace QnA.Application.Admin.Queries.GetSession
         {
             return await _unitOfWork.Sessions
                 .Where(x => x.Id == request.SessionId)
-                .OrderByDescending(x => x.DateCreated)
+                .OrderByDescending(x => x.Created)
                 .Select(x => new GetSessionsResult.Session
                 {
                     Id = x.Id.ToString(),
                     Title = x.Title,
                     Status = x.Status,
                     StatusName = x.Status.ToString(),
-                    DateCreated = x.DateCreated.ToShortDateString()
+                    DateCreated = x.Created.ToShortDateString()
                 })
                 .SingleOrDefaultAsync(cancellationToken);
         }
