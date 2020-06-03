@@ -65,6 +65,12 @@ namespace QnA.Domain.Models
             Status = Status.Offline;
             CaptureModification(createdBy, dateService, $"Set {nameof(Status.Offline)}");
         }
+
+        public void Archive(string createdBy, IDateService dateService)
+        {
+            Status = Status.Archived;
+            CaptureModification(createdBy, dateService, $"{nameof(Status.Archived)}");
+        }
     }
 
     public enum Status

@@ -23,9 +23,20 @@ namespace QnA.Application.Tasks.UpdateSessionsStatus
 
         public async Task<Unit> Handle(UpdateSessionsStatusCommand request, CancellationToken cancellationToken)
         {
-            var sessionsToBeOffline = _unitOfWork.Sessions.Where(x => x.Status == Status.Online && x.LastModified < _dateService.Now.AddDays(-1)).ToList();
+            var sessionsToBeOffline = _unitOfWork.Sessions
+                .Where(x => x.Status == Status.Online &&
+                            x.LastModified < _dateService.Now.AddDays(-1))
+                .ToList();
 
             sessionsToBeOffline.ForEach(x => x.SetOffline(_user.Username, _dateService));
+
+            var sessionsToBeArchived = _unitOfWork.Sessions
+                .Where(x => x.Questions.Any() &&
+                            x.Status == Status.Offline &&
+                            x.LastModified < _dateService.Now.AddDays(-7))
+                .ToList();
+
+            sessionsToBeArchived.ForEach(x => x.Archive(_user.Username, _dateService));
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
