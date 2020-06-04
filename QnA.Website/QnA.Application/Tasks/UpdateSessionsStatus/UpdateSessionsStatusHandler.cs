@@ -16,12 +16,12 @@ namespace QnA.Application.Tasks.UpdateSessionsStatus
         private readonly IUser _user;
         private readonly ILogger _logger;
 
-        public UpdateSessionsStatusHandler(IUnitOfWork unitOfWork, IDateService dateService, IUser user, ILogger logger)
+        public UpdateSessionsStatusHandler(IUnitOfWork unitOfWork, IDateService dateService, IUser user, ILoggerFactory loggerFactory)
         {
             _unitOfWork = unitOfWork;
             _dateService = dateService;
             _user = user;
-            _logger = logger;
+            _logger = loggerFactory.CreateLogger<UpdateSessionsStatusHandler>();
         }
 
         public async Task<Unit> Handle(UpdateSessionsStatusCommand request, CancellationToken cancellationToken)
