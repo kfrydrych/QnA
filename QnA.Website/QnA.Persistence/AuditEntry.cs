@@ -58,10 +58,10 @@ namespace QnA.Persistence
             EventMessage = "Modified";
             ModifiedBy = _user.Username ?? _user.UniqueSource;
 
-            if (Entry.Entity is AuditableEntity basEntity)
+            if (Entry.Entity is AuditableEntity entity)
             {
-                EventMessage = basEntity.LastChangeEvent;
-                ModifiedBy = basEntity.LastModifiedBy;
+                EventMessage = entity.LastChangeEvent;
+                ModifiedBy = entity.LastModifiedBy;
             }
         }
         private void SetTableValues()
@@ -79,7 +79,7 @@ namespace QnA.Persistence
                     continue;
                 }
 
-                string propertyName = property.Metadata.Name;
+                var propertyName = property.Metadata.Name;
                 if (property.Metadata.IsPrimaryKey())
                 {
                     SubjectId = property.CurrentValue;
