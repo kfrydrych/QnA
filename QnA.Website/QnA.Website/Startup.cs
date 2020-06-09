@@ -68,6 +68,8 @@ namespace QnA.Website
 
             app.UseAuthorization();
 
+            app.InitializeDatabase();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

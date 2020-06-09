@@ -2,8 +2,11 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using QnA.Application.Interfaces;
+using QnA.Persistence;
 using QnA.Website.Services;
 using System.Reflection;
 using System.Security.Claims;
@@ -52,6 +55,12 @@ namespace QnA.Website
                 options.AppSecret = "07dff67babb9eaf457678b968f376e6a";
                 options.SaveTokens = true;
             });
+        }
+
+        public static void InitializeDatabase(this IApplicationBuilder app)
+        {
+            using var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
+            scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
         }
     }
 }
