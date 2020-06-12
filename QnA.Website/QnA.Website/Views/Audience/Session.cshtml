@@ -7,10 +7,14 @@
 }
 
 <div class="bg-secondary">
-    <div class="container pt-2">
-        <h4 class="text-white mb-3">@Model.Title</h4>
-        <div id="add-question-form-wrapper">
-            @await Html.PartialAsync("_AskQuestion", Model.AddQuestionCommand)
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="text-white mb-3">@Model.Title</h4>
+                <div id="add-question-form-wrapper">
+                    @await Html.PartialAsync("_AskQuestion", Model.AddQuestionCommand)
+                </div>
+            </div>
         </div>
     </div>
 </div>

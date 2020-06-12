@@ -10,13 +10,9 @@
 
     @await Html.PartialAsync("_Header")
 
-    @RenderBody()
-
-    @*<div class="container main-content">
-            <main role="main">
-
-            </main>
-        </div>*@
+    <div class="main-content">
+        @RenderBody()
+    </div>
 
     @await Html.PartialAsync("_Footer")
 

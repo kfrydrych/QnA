@@ -40,9 +40,23 @@ h4 {
 }
 
 .main-content {
-    /*margin-top: 45px;
-    margin-bottom: 60px;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 60px;
 }
+
+    .main-content::after {
+        content: "";
+        background: url('../images/question-marks-background.jpg') no-repeat center center fixed;
+        opacity: 0.1;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+    }
 
 .border-top {
   border-top: 1px solid #e5e5e5;

@@ -5,39 +5,60 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title">Use one of the options to login</h4>
+<div class="container mt-5">
 
-        <form asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*@foreach (var provider in Model.ExternalLogins)
-                {
-                    <button type="submit"
-                            name="provider"
-                            value="@provider.Name"
-                            class="btn btn-primary"
-                            title="Login using your @provider.DisplayName account">
-                        @provider.DisplayName
-                    </button>
-                }*@
+    <div class="row justify-content-center">
+        <div class="col-md-6">
 
-            <button type="submit"
-                    name="provider"
-                    value="Google"
-                    class="btn btn-primary"
-                    title="Login using your Google account">
-                Google
-            </button>
-            <button type="submit"
-                    name="provider"
-                    value="Facebook"
-                    class="btn btn-primary"
-                    title="Login using your Facebook account">
-                Facebook
-            </button>
-        </form>
+            <div class="card justify-content-center">
+                <div class="card-body">
+                    <p class="card-title mb-3">Login in to continue...</p>
+                    <form asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        @*@foreach (var provider in Model.ExternalLogins)
+                            {
+                                <button type="submit"
+                                        name="provider"
+                                        value="@provider.Name"
+                                        class="btn btn-primary"
+                                        title="Login using your @provider.DisplayName account">
+                                    @provider.DisplayName
+                                </button>
+                            }*@
+
+                        <div class="form-group">
+                            <button type="submit"
+                                    name="provider"
+                                    value="Google"
+                                    class="btn btn-danger btn-lg w-100"
+                                    title="Login using your Google account">
+                                <i class="fab fa-google"></i>
+                                Login with Google
+                            </button>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit"
+                                    name="provider"
+                                    value="Facebook"
+                                    class="btn btn-primary btn-lg w-100"
+                                    title="Login using your Facebook account">
+                                <i class="fab fa-facebook-f"></i>
+                                Login with Facebook
+                            </button>
+                        </div>
+
+
+
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
     </div>
+
+
 </div>
 
 
