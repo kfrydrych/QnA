@@ -20,6 +20,10 @@
     <ProjectReference Include="..\QnA.Persistence\QnA.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\js\main\" />
+  </ItemGroup>
+
 
 
 </Project>

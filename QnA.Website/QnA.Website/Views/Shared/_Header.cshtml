@@ -1,42 +1,144 @@
-﻿<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3 fixed-top">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">QnA</a>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        @*<li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Sessions" asp-action="Index">Sessions</a>
-                            </li>*@
-                    </ul>
-                </div>
+﻿@*<header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3 fixed-top">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">QnA</a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                        </ul>
+                    </div>
 
-                <div class="collapse navbar-collapse" id="account">
-                    <ul class="navbar-nav ml-auto d-inline">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span><i class="far fa-user-circle fa-2x pr-1"></i>@User.Identity.Name</span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-controller="Sessions" asp-action="Index">My Sessions</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-action="Logout" asp-controller="Accounts">Logout</a>
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="collapse navbar-collapse" id="account">
+                        <ul class="navbar-nav ml-auto d-inline">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span><i class="far fa-user-circle fa-2x pr-1"></i>@User.Identity.Name</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-controller="Sessions" asp-action="Index">My Sessions</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-action="Logout" asp-controller="Accounts">Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <a class="nav-link text-white" asp-action="Login" asp-controller="Accounts">Login</a>
+                }
+
+            </div>
+        </nav>
+    </header>*@
+
+<div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+</div>
+
+
+<div class="top-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="#" class=""><span class="mr-2  icon-envelope-open-o"></span> <span class="d-none d-md-inline-block">qna@crashcreativestudio.com</span></a>
+                <span class="mx-md-2 d-inline-block"></span>
+                @*<a href="#" class=""><span class="mr-2  icon-phone"></span> <span class="d-none d-md-inline-block">QnA Platform</span></a>*@
+
+                <div class="float-right">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="#"><i class="far fa-user-circle fa pr-1"></i>@User.Identity.Name</a>
+                    }
+
+                    @*<a href="#" class=""><span class="mr-2  icon-twitter"></span> <span class="d-none d-md-inline-block">Twitter</span></a>
+                        <span class="mx-md-2 d-inline-block"></span>
+                        <a href="#" class=""><span class="mr-2  icon-facebook"></span> <span class="d-none d-md-inline-block">Facebook</span></a>*@
                 </div>
-            }
-            else
-            {
-                <a class="nav-link text-white" asp-action="Login" asp-controller="Accounts">Login</a>
-            }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+    <div class="container">
+        <div class="row align-items-center position-relative">
+
+
+            <div class="site-logo">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="text-black"><span class="text-primary">QnA</span></a>
+            </div>
+
+            <div class="col-12">
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                            <ul class="navbar-nav flex-grow-1">
+                            </ul>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="account">
+                            <ul class="navbar-nav ml-auto d-inline">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span><i class="far fa-user-circle fa-2x pr-1"></i>@User.Identity.Name</span>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" asp-controller="Sessions" asp-action="Index">My Sessions</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" asp-action="Logout" asp-controller="Accounts">Logout</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>*@
+
+
+                    <nav class="site-navigation text-right ml-auto " role="navigation">
+
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li><a class="nav-link" asp-controller="Sessions" asp-action="Index">My Sessions</a></li>
+                            <li><a class="nav-link" asp-action="Logout" asp-controller="Accounts">Logout</a></li>
+                        </ul>
+                    </nav>
+
+                }
+                else
+                {
+                    <nav class="site-navigation text-right ml-auto " role="navigation">
+
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li><a class="nav-link" asp-action="Login" asp-controller="Accounts">Login</a></li>
+
+                        </ul>
+                    </nav>
+                }
+
+
+
+            </div>
+
+            <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
 
         </div>
-    </nav>
+    </div>
+
 </header>
 

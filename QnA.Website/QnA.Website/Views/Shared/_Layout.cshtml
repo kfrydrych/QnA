@@ -6,14 +6,12 @@
     <title>@ViewData["Title"] - QnA</title>
     @await Html.PartialAsync("_Css")
 </head>
-<body>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
     @await Html.PartialAsync("_Header")
 
-    <div class="container main-content">
-        <main role="main">
-            @RenderBody()
-        </main>
+    <div class="main-content">
+        @RenderBody()
     </div>
 
     @await Html.PartialAsync("_Footer")
