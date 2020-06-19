@@ -8,18 +8,22 @@ namespace QnA.Tests.Domain
 {
     public class SessionTests
     {
-        private readonly DateTime _testDate;
-        private readonly IDateService _dateService;
+        private DateTime _creationDate;
+        private DateTime _modificationDate;
+        private IDateService _dateService;
 
-        public SessionTests()
+        [SetUp]
+        public void Before_Each_Test()
         {
-            _testDate = new DateTime(2020, 10, 10, 20, 15, 05);
+            _creationDate = new DateTime(2020, 10, 10, 20, 15, 05);
+
+            _modificationDate = new DateTime(2020, 10, 15, 18, 20, 00);
 
             var dateServiceSetup = new Mock<IDateService>();
 
             dateServiceSetup
                 .Setup(x => x.Now)
-                .Returns(_testDate);
+                .Returns(_creationDate);
 
             _dateService = dateServiceSetup.Object;
         }
@@ -34,11 +38,36 @@ namespace QnA.Tests.Domain
                 Assert.AreEqual("Test Session", session.Title);
                 Assert.AreEqual("TEST_1234", session.AccessCode);
                 Assert.AreEqual(Status.Online, session.Status);
-                Assert.AreEqual(_testDate, session.Created);
+                Assert.AreEqual(_creationDate, session.Created);
                 Assert.AreEqual("test_user", session.CreatedBy);
-                Assert.AreEqual(_testDate, session.LastModified);
+                Assert.AreEqual(_creationDate, session.LastModified);
                 Assert.AreEqual("test_user", session.LastModifiedBy);
                 Assert.AreEqual("Created", session.LastChangeEvent);
+                Assert.AreEqual(0, session.Questions.Count);
+            });
+        }
+
+        [Test]
+        public void When_Session_Set_Offline_Updates_Session_State()
+        {
+            var session = new Session("Test Session", "TEST_1234", "test_user", _dateService);
+
+            var dateServiceSetup = new Mock<IDateService>();
+            dateServiceSetup.Setup(x => x.Now).Returns(_modificationDate);
+            _dateService = dateServiceSetup.Object;
+
+            session.SetOffline("test_user", _dateService);
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual("Test Session", session.Title);
+                Assert.AreEqual("TEST_1234", session.AccessCode);
+                Assert.AreEqual(Status.Offline, session.Status);
+                Assert.AreEqual(_creationDate, session.Created);
+                Assert.AreEqual("test_user", session.CreatedBy);
+                Assert.AreEqual(_modificationDate, session.LastModified);
+                Assert.AreEqual("test_user", session.LastModifiedBy);
+                Assert.AreEqual("Set Offline", session.LastChangeEvent);
                 Assert.AreEqual(0, session.Questions.Count);
             });
         }
