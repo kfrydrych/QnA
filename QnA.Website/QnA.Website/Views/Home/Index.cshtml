@@ -1,4 +1,5 @@
-﻿@model QnA.Application.Audience.Queries.FindSessions.FindSessionsQuery
+﻿@using Microsoft.AspNetCore.Http.Extensions
+@model QnA.Application.Audience.Queries.FindSessions.FindSessionsQuery
 
 @{
     ViewData["Title"] = "Home Page";
@@ -23,21 +24,21 @@
             <div class="container">
                 <div class="owl-carousel owl-all">
                     <div class="service text-center">
-                        @*<a href="#"><img src="images/depot_img_1.jpg" alt="Image" class="img-fluid"></a>*@
+                        <span class="far fa fa-question fa-5x mb-3"></span>
                         <div class="px-md-3">
                             <h2><a href="#">5000+</a></h2>
                             <h4>asked questions</h4>
                         </div>
                     </div>
                     <div class="service text-center">
-                        @*<a href="#"><img src="images/depot_img_2.jpg" alt="Image" class="img-fluid"></a>*@
+                        <span class="far fa fa-calendar-week fa-5x mb-3"></span>
                         <div class="px-md-3">
                             <h2><a href="#">250+</a></h2>
                             <h4>created sessions</h4>
                         </div>
                     </div>
                     <div class="service text-center">
-                        @*<a href="#"><img src="images/depot_img_3.jpg" alt="Image" class="img-fluid"></a>*@
+                        <span class="far fa fa-smile fa-5x mb-3"></span>
                         <div class="px-md-3">
                             <h2><a href="#">50+</a></h2>
                             <h4>satisfied users</h4>
@@ -59,52 +60,52 @@
             </div>
             <div class="owl-carousel owl-all">
                 <div class="block__35630 text-center">
-                    <div class="icon mb-0">
-                        <span class="flaticon-ferry"></span>
+                    <div class="icon mb-3">
+                        <span class="far fa fa-sign-in-alt"></span>
                     </div>
-                    <h3 class="mb-3">Login</h3>
-                    <p>Login using one of the most popular service providers like Google or Facebook.</p>
+                    <h3 class="mb-3">Log in</h3>
+                    <p>Log in using one of the most popular service providers like Google or Facebook.</p>
                 </div>
 
                 <div class="block__35630 text-center">
-                    <div class="icon mb-0">
-                        <span class="flaticon-airplane"></span>
+                    <div class="icon mb-3">
+                        <span class="far fa fa-calendar-week"></span>
                     </div>
-                    <h3 class="mb-3">Create a Session</h3>
-                    <p>Create a session. Give it a title and access code, so your audience can join it.</p>
+                    <h3 class="mb-3">Create a session</h3>
+                    <p>Create a session about the subject you want to present.</p>
                 </div>
 
                 <div class="block__35630 text-center">
-                    <div class="icon mb-0">
-                        <span class="flaticon-box"></span>
+                    <div class="icon mb-3">
+                        <span class="far fa fa-tv"></span>
                     </div>
-                    <h3 class="mb-3">View Board</h3>
-                    <p>Display the session board on the screen in front of your audience. It will show all the questions and the access code.</p>
+                    <h3 class="mb-3">Display it</h3>
+                    <p>Display the session board for your audience on your presentation.</p>
                 </div>
 
-                @*<div class="block__35630 text-center">
-                        <div class="icon mb-0">
-                            <span class="flaticon-lorry"></span>
-                        </div>
-                        <h3 class="mb-3">Trucking</h3>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+                <div class="block__35630 text-center">
+                    <div class="icon mb-3">
+                        <span class="far fa fa-user-check"></span>
                     </div>
+                    <h3 class="mb-3">Let your audience to join</h3>
+                    <p>Let your audience to join by providing the access code to your session on @Context.Request.GetDisplayUrl()</p>
+                </div>
 
-                    <div class="block__35630 text-center">
-                        <div class="icon mb-0">
-                            <span class="flaticon-warehouse"></span>
-                        </div>
-                        <h3 class="mb-3">Warehouse</h3>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+                <div class="block__35630 text-center">
+                    <div class="icon mb-3">
+                        <span class="far fa fa-comment-dots"></span>
                     </div>
+                    <h3 class="mb-3">No disruption</h3>
+                    <p>Your audience can ask and promote best questions without any disruption to your presentation.</p>
+                </div>
 
-                    <div class="block__35630 text-center">
-                        <div class="icon mb-0">
-                            <span class="flaticon-add"></span>
-                        </div>
-                        <h3 class="mb-3">Delivery</h3>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
-                    </div>*@
+                <div class="block__35630 text-center">
+                    <div class="icon mb-3">
+                        <span class="far fa fa-chart-line"></span>
+                    </div>
+                    <h3 class="mb-3">Best results</h3>
+                    <p>Maximize your time to answer the most valuable questions.</p>
+                </div>
 
             </div>
         </div>
