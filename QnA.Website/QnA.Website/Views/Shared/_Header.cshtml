@@ -12,7 +12,16 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a href="#" class=""><span class="mr-2  icon-envelope-open-o"></span> <span class="d-none d-sm-inline-block">qna@crashcreativestudio.com</span></a>
+                @{
+                    var contactDisplayMobileClass = "";
+                }
+                @if (User.Identity.IsAuthenticated)
+                {
+                    contactDisplayMobileClass = "d-none";
+                }
+
+                <a href="#" class=""><span class="@contactDisplayMobileClass d-sm-inline-block mr-2 icon-envelope-open-o"></span> <span class="@contactDisplayMobileClass d-sm-inline-block">qna@crashcreativestudio.com</span></a>
+
                 <span class="mx-md-2 d-inline-block"></span>
                 <div class="float-right">
                     @if (User.Identity.IsAuthenticated)
@@ -32,7 +41,7 @@
         <div class="row align-items-center position-relative">
 
             <div class="site-logo">
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="text-black"><span class="text-primary">QnA</span></a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="text-black"><span class="text-primary">&#191;QnA</span></a>
             </div>
 
             <div class="col-12">
