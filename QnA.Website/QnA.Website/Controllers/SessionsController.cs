@@ -29,6 +29,13 @@ namespace QnA.Website.Controllers
             return View(result);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Index(int limit)
+        {
+            var result = await _mediator.Send(new GetSessionsQuery(limit));
+            return View(result);
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
