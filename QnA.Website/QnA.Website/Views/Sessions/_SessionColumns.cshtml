@@ -4,9 +4,13 @@
 <td>@Model.DateCreated</td>
 @if (Model.IsOnline)
 {
+    <td><span class="badge badge-pill badge-success">@Model.StatusName</span></td>
+}
+else if (Model.IsOffline)
+{
     <td><span class="badge badge-pill badge-info">@Model.StatusName</span></td>
 }
-@if (Model.IsOffline)
+else
 {
     <td><span class="badge badge-pill badge-secondary">@Model.StatusName</span></td>
 }
