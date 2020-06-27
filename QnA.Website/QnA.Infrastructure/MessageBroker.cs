@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using QnA.Application.Interfaces;
+using QnA.Application.Messages;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace QnA.Infrastructure
             _configuration = configuration;
         }
 
-        public async Task Publish<T>(T @event) where T : class
+        public async Task Publish<T>(T @event) where T : IMessage
         {
             var eventName = @event.GetType().Name;
 
