@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.SignalR;
+using QnA.Application.Audience.Events;
 using QnA.Application.Interfaces;
+using QnA.Website.Services;
 using System.Threading;
 using System.Threading.Tasks;
-using QnA.Application.Audience.Commands.AddQuestion;
-using QnA.Website.Services;
 
 namespace QnA.Website.Handlers
 {

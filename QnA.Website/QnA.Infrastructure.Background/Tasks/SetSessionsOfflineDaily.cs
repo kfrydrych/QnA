@@ -1,6 +1,6 @@
 using MediatR;
 using Microsoft.Azure.WebJobs;
-using QnA.Application.Tasks.UpdateSessionsStatus;
+using QnA.Application.Tasks.Commands.UpdateSessionsStatus;
 
 namespace QnA.Infrastructure.Background.Tasks
 {

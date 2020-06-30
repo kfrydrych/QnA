@@ -2,7 +2,7 @@
 
 namespace QnA.Application.Messages
 {
-    public class UserLoggedInEvent : IMessage
+    public class NewUserRegisteredEvent : IMessage
     {
         public string FullName { get; set; }
         public string Email { get; set; }

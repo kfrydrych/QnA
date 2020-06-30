@@ -1,7 +1,7 @@
 ﻿using System;
 using MediatR;
 
-namespace QnA.Application.Audience.Commands.PromoteQuestion
+namespace QnA.Application.Audience.Events
 {
     public class QuestionPromotedEvent : INotification
     {
