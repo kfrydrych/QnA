@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QnA.Domain.Interfaces;
+using System;
 
 namespace QnA.Domain.Common
 {
@@ -13,5 +14,13 @@ namespace QnA.Domain.Common
         public string OldValues { get; set; }
         public string NewValues { get; set; }
         public string ModifiedBy { get; set; }
+        public bool Published { get; protected set; }
+        public DateTime? PublishDateTime { get; protected set; }
+
+        public void MarkAsPublished(IDateService dateService)
+        {
+            Published = true;
+            PublishDateTime = dateService.Now;
+        }
     }
 }
