@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using QnA.Application.Interfaces;
 using QnA.Application.Messages;
 using QnA.Domain.Interfaces;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -34,10 +33,8 @@ namespace QnA.Application.Tasks.Commands.PublishNewRegisteredUsers
 
             if (newRegisteredUserEvent != null)
             {
-                var userid = Guid.Parse(newRegisteredUserEvent.KeyValues);
-
                 var user = await _unitOfWork.Users
-                    .SingleAsync(x => x.Id == userid, cancellationToken);
+                    .SingleAsync(x => x.Id == newRegisteredUserEvent.SubjectId, cancellationToken);
 
                 var @event = new NewUserRegisteredEvent
                 {
