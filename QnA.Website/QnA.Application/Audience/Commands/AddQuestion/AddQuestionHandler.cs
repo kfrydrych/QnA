@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using QnA.Application.Audience.Events;
 using QnA.Application.Interfaces;
 using QnA.Domain.Exceptions;
 using QnA.Domain.Interfaces;

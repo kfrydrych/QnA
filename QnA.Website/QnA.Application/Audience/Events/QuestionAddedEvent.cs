@@ -1,7 +1,7 @@
 ﻿using System;
 using MediatR;
 
-namespace QnA.Application.Audience.Commands.AddQuestion
+namespace QnA.Application.Audience.Events
 {
     public class QuestionAddedEvent : INotification
     {

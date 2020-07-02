@@ -5,6 +5,7 @@ using QnA.Domain.Exceptions;
 using QnA.Domain.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
+using QnA.Application.Audience.Events;
 
 namespace QnA.Application.Audience.Commands.PromoteQuestion
 {

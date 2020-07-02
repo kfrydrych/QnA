@@ -13,16 +13,19 @@
                     <h4 class="card-title">My Sessions</h4>
                     <p><a asp-action="Create">Create New</a></p>
                     <hr />
-                    <div class="d-flex justify-content-between">
-                        <p>
+                    <div class="d-sm-flex justify-content-between">
+                        <p class="d-none d-sm-block">
                             Showing @Model.Statistics.DisplayCount out of @Model.Statistics.TotalCount
-                            | Online: @Model.Statistics.OnlineCount
-                            | Offline: @Model.Statistics.OfflineCount
-                            | Archived: @Model.Statistics.ArchivedCount
+                            @*| Online: @Model.Statistics.OnlineCount
+                                | Offline: @Model.Statistics.OfflineCount
+                                | Archived: @Model.Statistics.ArchivedCount*@
                         </p>
-                        <form asp-controller="Sessions" asp-action="Index" class="form-inline mb-3">
-                            <select asp-for="@Model.Limit" asp-items="@(new SelectList(Model.LimitOptions))" class="form-control"></select>
-                            <input type="submit" class="btn btn-primary ml-1" value="Show" />
+                        <form asp-controller="Sessions" asp-action="Index" class="form-inline">
+                            <select asp-for="@Model.Limit" asp-items="@(new SelectList(Model.LimitOptions))" class="form-control mb-3"></select>
+                            <input type="submit" class="btn btn-primary ml-1 mb-3" value="Show" />
+                            <p class="d-block d-sm-none ml-2">
+                                Showing @Model.Statistics.DisplayCount out of @Model.Statistics.TotalCount
+                            </p>
                         </form>
                     </div>
                     <table class="table">

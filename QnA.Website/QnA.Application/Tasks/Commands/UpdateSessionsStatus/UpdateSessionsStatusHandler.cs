@@ -1,13 +1,13 @@
-﻿using MediatR;
+﻿using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using QnA.Application.Interfaces;
 using QnA.Domain.Interfaces;
 using QnA.Domain.Models;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace QnA.Application.Tasks.UpdateSessionsStatus
+namespace QnA.Application.Tasks.Commands.UpdateSessionsStatus
 {
     public class UpdateSessionsStatusHandler : IRequestHandler<UpdateSessionsStatusCommand>
     {

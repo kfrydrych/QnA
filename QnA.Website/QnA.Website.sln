@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QnA.Infrastructure", "QnA.I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QnA.Infrastructure.Background", "QnA.Infrastructure.Background\QnA.Infrastructure.Background.csproj", "{F32FD806-63EC-4072-847F-540DD456B0CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QnA.Tests", "QnA.Tests\QnA.Tests.csproj", "{7C1D685B-C836-4E5D-86C4-37BBD902B60D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QnA.Tests", "QnA.Tests\QnA.Tests.csproj", "{7C1D685B-C836-4E5D-86C4-37BBD902B60D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

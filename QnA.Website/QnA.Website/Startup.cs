@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using QnA.Application;
 using QnA.Infrastructure;
 using QnA.Persistence;
+using QnA.Website.Infrastructure;
 using QnA.Website.Infrastructure.Filters;
 using QnA.Website.Services;
 

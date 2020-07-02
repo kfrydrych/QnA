@@ -4,6 +4,7 @@ using QnA.Application.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 using QnA.Application.Audience.Commands.PromoteQuestion;
+using QnA.Application.Audience.Events;
 using QnA.Website.Services;
 
 namespace QnA.Website.Handlers

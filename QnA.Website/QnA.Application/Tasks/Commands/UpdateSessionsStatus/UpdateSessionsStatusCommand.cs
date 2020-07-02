@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace QnA.Application.Tasks.UpdateSessionsStatus
+namespace QnA.Application.Tasks.Commands.UpdateSessionsStatus
 {
     public class UpdateSessionsStatusCommand : IRequest
     {

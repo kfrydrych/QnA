@@ -1,14 +1,14 @@
 using MediatR;
 using Microsoft.Azure.WebJobs;
-using QnA.Application.Tasks.UpdateSessionsStatus;
+using QnA.Application.Tasks.Commands.UpdateSessionsStatus;
 
 namespace QnA.Infrastructure.Background.Tasks
 {
-    public class SetSessionsOfflineDaily
+    public class UpdateSessionsStatusDaily
     {
         private readonly IMediator _mediator;
 
-        public SetSessionsOfflineDaily(IMediator mediator)
+        public UpdateSessionsStatusDaily(IMediator mediator)
         {
             _mediator = mediator;
         }

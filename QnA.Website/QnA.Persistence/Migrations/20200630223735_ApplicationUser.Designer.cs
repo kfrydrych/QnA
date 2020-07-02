@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QnA.Persistence;
 
 namespace QnA.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200630223735_ApplicationUser")]
+    partial class ApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,12 +70,6 @@ namespace QnA.Persistence.Migrations
 
                     b.Property<string>("OldValues")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("PublishDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Published")
-                        .HasColumnType("bit");
 
                     b.Property<Guid>("SubjectId")
                         .HasColumnType("uniqueidentifier");

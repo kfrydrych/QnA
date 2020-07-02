@@ -23,6 +23,7 @@ namespace QnA.Persistence
 
         public DbSet<Question> Questions { get; set; }
         public DbSet<Session> Sessions { get; set; }
+        public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<AuditRecord> AuditRecords { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
