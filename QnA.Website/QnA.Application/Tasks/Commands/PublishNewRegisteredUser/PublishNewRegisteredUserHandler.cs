@@ -6,12 +6,8 @@ using QnA.Domain.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace QnA.Application.Tasks.Commands.PublishNewRegisteredUsers
+namespace QnA.Application.Tasks.Commands.PublishNewRegisteredUser
 {
-    public class PublishNewRegisteredUserCommand : IRequest
-    {
-    }
-
     public class PublishNewRegisteredUserHandler : IRequestHandler<PublishNewRegisteredUserCommand>
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -29,7 +25,7 @@ namespace QnA.Application.Tasks.Commands.PublishNewRegisteredUsers
         {
             var newRegisteredUserEvent = await _unitOfWork.AuditRecords
                 .FirstOrDefaultAsync(x => x.TableName == "Users" &&
-                                                    x.Published == false, cancellationToken);
+                                          x.Published == false, cancellationToken);
 
             if (newRegisteredUserEvent != null)
             {
@@ -48,7 +44,7 @@ namespace QnA.Application.Tasks.Commands.PublishNewRegisteredUsers
 
                 newRegisteredUserEvent.MarkAsPublished(_dateService);
 
-                await _unitOfWork.SaveChangesAsync(cancellationToken);
+                await _unitOfWork.SaveChangesWithoutHistoryAsync(cancellationToken);
             }
 
             return Unit.Value;

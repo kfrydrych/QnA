@@ -89,5 +89,10 @@ namespace QnA.Persistence
 
             return SaveChangesAsync();
         }
+
+        public async Task<int> SaveChangesWithoutHistoryAsync(CancellationToken cancellationToken)
+        {
+            return await base.SaveChangesAsync(cancellationToken);
+        }
     }
 }

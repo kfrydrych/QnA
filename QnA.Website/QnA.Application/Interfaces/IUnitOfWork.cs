@@ -13,5 +13,6 @@ namespace QnA.Application.Interfaces
         DbSet<ApplicationUser> Users { get; set; }
         DbSet<AuditRecord> AuditRecords { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        Task<int> SaveChangesWithoutHistoryAsync(CancellationToken cancellationToken);
     }
 }
