@@ -75,9 +75,15 @@
                 } else {
                     const notAlreadyVoted = $(this).attr('data-not-already-voted');
                     if (notAlreadyVoted == 'true') {
-                        $(this).css('color', 'black');
+                        $(this)
+                            .css('color', 'black')
+                            .css('cursor', 'pointer')
+                            .prop("disabled", false);
                     } else {
-                        $(this).css('color', 'green');
+                        $(this)
+                            .css('color', 'green')
+                            .css('cursor', 'auto')
+                            .prop("disabled", true);
                     }
                 }
             });

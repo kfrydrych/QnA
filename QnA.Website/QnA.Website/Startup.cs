@@ -9,6 +9,7 @@ using QnA.Infrastructure;
 using QnA.Persistence;
 using QnA.Website.Infrastructure;
 using QnA.Website.Infrastructure.Filters;
+using QnA.Website.Infrastructure.Middleware;
 using QnA.Website.Services;
 
 namespace QnA.Website
@@ -70,6 +71,8 @@ namespace QnA.Website
             app.UseAuthorization();
 
             app.InitializeDatabase();
+
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
