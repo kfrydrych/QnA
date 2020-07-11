@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QnA.Persistence;
 
 namespace QnA.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200711224342_IndexAddedToQuestion")]
+    partial class IndexAddedToQuestion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,8 +130,8 @@ namespace QnA.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SessionId", "Score")
-                        .HasAnnotation("SqlServer:Include", new[] { "Text", "CreatedBy" });
+                    b.HasIndex("SessionId")
+                        .HasAnnotation("SqlServer:Include", new[] { "Text", "Score", "CreatedBy" });
 
                     b.ToTable("Questions");
                 });

@@ -26,6 +26,7 @@ namespace QnA.Domain.Models
 
         public Guid Id { get; protected set; }
         public Session Session { get; protected set; }
+        public Guid SessionId { get; protected set; }
         public string Text { get; protected set; }
         public int Score { get; protected set; }
         public IReadOnlyList<Vote> Votes => _votes;

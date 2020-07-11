@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using QnA.Domain.Models;
 
 namespace QnA.Persistence.Configurations
@@ -11,14 +12,9 @@ namespace QnA.Persistence.Configurations
 
             builder.Property(x => x.Text).HasMaxLength(750).IsRequired();
             builder.HasMany(x => x.Votes).WithOne(x => x.Question).IsRequired();
+
+            builder.HasIndex(i => new { i.SessionId, i.Score })
+                .IncludeProperties(x => new { x.Text, x.CreatedBy });
         }
-
-        //public void Configure(EntityTypeBuilder<Question> builder)
-        //{
-        //    builder.Property(x => x.Text).HasMaxLength(750).IsRequired();
-        //    builder.Property(x => x.CreatedBy).HasMaxLength(50).IsRequired();
-
-        //    builder.HasMany(x => x.Votes).WithOne(x => x.Question).IsRequired();
-        //}
     }
 }

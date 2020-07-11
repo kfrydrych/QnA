@@ -17,6 +17,6 @@ namespace QnA.Domain.Models
 
         public Guid Id { get; protected set; }
         public Question Question { get; protected set; }
-
+        public Guid QuestionId { get; protected set; }
     }
 }
