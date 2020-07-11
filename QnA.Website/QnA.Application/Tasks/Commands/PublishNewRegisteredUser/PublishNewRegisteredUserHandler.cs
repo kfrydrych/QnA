@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using QnA.Application.Interfaces;
 using QnA.Application.Messages;
+using QnA.Domain.Definitions;
 using QnA.Domain.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace QnA.Application.Tasks.Commands.PublishNewRegisteredUser
         public async Task<Unit> Handle(PublishNewRegisteredUserCommand request, CancellationToken cancellationToken)
         {
             var newRegisteredUserEvent = await _unitOfWork.AuditRecords
-                .FirstOrDefaultAsync(x => x.TableName == "Users" &&
+                .FirstOrDefaultAsync(x => x.TableName == AuditRecordTable.Users &&
                                           x.Published == false, cancellationToken);
 
             if (newRegisteredUserEvent != null)
@@ -36,13 +37,13 @@ namespace QnA.Application.Tasks.Commands.PublishNewRegisteredUser
                 {
                     FullName = user.FullName,
                     Email = user.Email,
-                    ApplicationId = 2,
+                    ApplicationId = ApplicationId.QnA,
                     EventDate = newRegisteredUserEvent.DateTime
                 };
 
-                await _broker.Publish(@event);
-
                 newRegisteredUserEvent.MarkAsPublished(_dateService);
+
+                await _broker.Publish(@event);
 
                 await _unitOfWork.SaveChangesWithoutHistoryAsync(cancellationToken);
             }

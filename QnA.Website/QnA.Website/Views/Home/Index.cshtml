@@ -116,6 +116,21 @@
 {
     <script>
 
+        $(document).ready(function () {
+
+            $('#access-code-input').on("keyup", function () {
+
+                const btn = $('#submit-btn');
+
+                if ($(this).val() !== "") {
+                    btn.prop('disabled', false);
+                } else {
+                    btn.prop('disabled', true);
+
+                }
+            });
+        });
+
         function showFindSessionsResultModal() {
             $('#findSessionResultModal').modal('show');
         }
