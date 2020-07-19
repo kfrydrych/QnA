@@ -23,14 +23,7 @@ namespace QnA.Website.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
-        {
-            var result = await _mediator.Send(new GetSessionsQuery());
-            return View(result);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Index(int limit)
+        public async Task<IActionResult> Index(int? limit)
         {
             var result = await _mediator.Send(new GetSessionsQuery(limit));
             return View(result);
