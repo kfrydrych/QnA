@@ -11,6 +11,7 @@ using QnA.Website.Infrastructure;
 using QnA.Website.Infrastructure.Filters;
 using QnA.Website.Infrastructure.Middleware;
 using QnA.Website.Services;
+using System.Globalization;
 
 namespace QnA.Website
 {
@@ -73,6 +74,10 @@ namespace QnA.Website
             app.InitializeDatabase();
 
             app.UseMiddleware<ErrorHandlingMiddleware>();
+
+            var cultureInfo = new CultureInfo("en-GB");
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
             app.UseEndpoints(endpoints =>
             {
