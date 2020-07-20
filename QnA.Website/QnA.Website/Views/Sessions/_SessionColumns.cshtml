@@ -2,22 +2,17 @@
 
 <td>@Model.Title</td>
 <td>@Model.DateCreated</td>
-@if (Model.IsOnline)
-{
-    <td><span class="badge badge-pill badge-success">@Model.StatusName</span></td>
-}
-else if (Model.IsOffline)
-{
-    <td><span class="badge badge-pill badge-info">@Model.StatusName</span></td>
-}
-else
-{
-    <td><span class="badge badge-pill badge-secondary">@Model.StatusName</span></td>
-}
 <td>
+    @{
+        var color = "secondary";
+
+        if (Model.IsOffline) { color = "info"; }
+
+        if (Model.IsOnline) { color = "success"; }
+    }
     <div class="dropdown">
-        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Actions
+        <button class="btn btn-sm btn-@color dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @Model.StatusName
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" asp-action="Active" , asp-route-id="@Model.Id">View Board</a>
